@@ -1,1 +1,37 @@
-<p>product works!</p>
+<div class="container" *ngIf="!popModal" >
+
+<div class="card" *ngFor="let prod of product" (click)="onGetData(prod?.ProductId)">
+  <div class="row">
+  <div class="col-4" (click)="onGetData(prod?.ProductId)">
+
+    <img [src]="prod.image" class="img-responsive" alt="Image" width="100px" height="100px">
+
+  </div>
+  <div class="col-5">
+   <p (click)="onGetData(prod?.ProductId)">{{prod?.ProductName}}</p>
+   <p>{{prod?.Category}}</p>
+   <p>{{prod?.price}}</p>
+  </div>
+  <div class="col-3">
+    <p>Price:  ${{prod?.price}}</p>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+<div *ngIf="popModal">
+<div class="backdrop"></div>
+<div class="alert-box" *ngFor="let pro of product">
+  <!-- <img [src]="pro.image" class="img-responsive" alt="Image" width="100px" height="100px"> -->
+ <h3>Product Name: {{pro?.ProductName}}</h3>
+ <p>Product Category: {{pro?.Category}}</p>
+ <p>Product Price: {{pro?.price}}</p>
+ <hr>
+ <button class="btn btn-warning" (click)="onHandlePopup()">X</button>
+
+</div>
+</div>
+
+
